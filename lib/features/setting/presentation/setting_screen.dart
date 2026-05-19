@@ -8,6 +8,7 @@ import 'package:dating_user/features/withdraw/presentation/withdraw_screen.dart'
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import '../../../core/constant/app_color.dart';
@@ -107,7 +108,8 @@ class SettingScreen extends StatelessWidget {
                                     ),
                                     Expanded(
                                       child: ElevatedButton(
-                                        onPressed: () {
+                                        onPressed: () async {
+                                          await GetStorage().erase();
                                           Get.offAll(() => LoginScreen());
                                         },
                                         style: ElevatedButton.styleFrom(

@@ -31,10 +31,10 @@ class HomeScreen extends GetView<HomeScreenController> {
               forceMaterialTransparency: true,
               actions: [
                 Container(
-                  padding: .symmetric(horizontal: 6,vertical: 6),
+                  padding: .symmetric(horizontal: 6, vertical: 6),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(100)
+                    borderRadius: BorderRadius.circular(100),
                   ),
                   child: Row(
                     spacing: 12,
@@ -60,6 +60,20 @@ class HomeScreen extends GetView<HomeScreenController> {
               Obx(
                 () => controller.isLoading.value
                     ? SliverToBoxAdapter(child: SizedBox())
+                    : controller.allUser.isEmpty
+                    ? SliverToBoxAdapter(
+                        child: Column(
+                          mainAxisAlignment: .center,
+                          children: [
+                            Text(
+                              "No User Found",
+                              style: AppTextStyle.mediumPoppins.copyWith(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
                     : SliverGrid.builder(
                         itemCount: controller.allUser.length,
                         itemBuilder: (context, index) {
