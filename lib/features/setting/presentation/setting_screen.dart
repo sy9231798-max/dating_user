@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:dating_user/core/common_widget/custom_elevated_button.dart';
 import 'package:dating_user/features/authentication/presentation/login/login_screen.dart';
 import 'package:dating_user/features/profile_edit/presentation/profile_edit_screen.dart';
+import 'package:dating_user/features/subscription/presentation/subscription_screen.dart';
 import 'package:dating_user/features/withdraw/controller/withdraw_screen_controller.dart';
 import 'package:dating_user/features/withdraw/presentation/withdraw_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -33,39 +34,20 @@ class SettingScreen extends StatelessWidget {
                   "Settings",
                   style: AppTextStyle.mediumPoppins.copyWith(fontSize: 18),
                 ),
-                InkWell(
+                SettingCard(
+                  title: "Profile",
                   onTap: () {
                     Get.to(() => ProfileEditScreen());
                   },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: .circular(12),
-                      color: Colors.white,
-                    ),
-                    padding: .symmetric(horizontal: 12, vertical: 12),
-                    child: Row(
-                      mainAxisAlignment: .spaceBetween,
-                      children: [
-                        Row(
-                          spacing: 12,
-                          children: [
-                            Icon(Iconsax.user),
-                            Text(
-                              "Profile",
-                              style: AppTextStyle.mediumPoppins.copyWith(
-                                fontSize: 16,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Icon(
-                          Icons.keyboard_arrow_right_outlined,
-                          color: AppColor.primaryColor,
-                        ),
-                      ],
-                    ),
-                  ),
+                  icon: Iconsax.user,
+                ),
+                SettingCard(
+                  title: "Subscription",
+                  onTap: () {
+                    Get.to(() => SubscriptionScreen());
+
+                  },
+                  icon: Iconsax.coin_1,
                 ),
               ],
             ),
@@ -142,6 +124,55 @@ class SettingScreen extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SettingCard extends StatelessWidget {
+  const SettingCard({
+    super.key,
+    this.onTap,
+    required this.title,
+    required this.icon,
+  });
+
+  final Function()? onTap;
+  final String title;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: .circular(12),
+          color: Colors.white,
+        ),
+        padding: .symmetric(horizontal: 12, vertical: 12),
+        child: Row(
+          mainAxisAlignment: .spaceBetween,
+          children: [
+            Row(
+              spacing: 12,
+              children: [
+                Icon(icon),
+                Text(
+                  title,
+                  style: AppTextStyle.mediumPoppins.copyWith(
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+            Icon(
+              Icons.keyboard_arrow_right_outlined,
+              color: AppColor.primaryColor,
             ),
           ],
         ),
