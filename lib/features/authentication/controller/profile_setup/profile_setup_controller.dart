@@ -323,23 +323,7 @@ class ProfileSetupController extends GetxController {
       errorSnackBar(context, "Select Date Of Birth");
       return;
     }
-    if (hobby.isEmpty) {
-      errorSnackBar(context, "Select Some Hobby");
-      return;
-    }
 
-    if (hobby.length < 3) {
-      errorSnackBar(context, "Add At least 3 Hobby");
-      return;
-    }
-    if (state.isEmpty) {
-      errorSnackBar(context, "Select State First");
-      return;
-    }
-    if (city.isEmpty) {
-      errorSnackBar(context, "Select City First");
-      return;
-    }
     isLoading.value = true;
     var response = await repo.submitProfileDetailCall(
       model: ProfileSetupDetailModel(

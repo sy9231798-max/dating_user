@@ -1,6 +1,6 @@
 class ApiEndpoints {
   // static const String baseUrl = "http://13.232.6.52:8000";
-  static const String baseUrl = "http://192.168.1.7:8000";
+  static const String baseUrl = "http://192.168.1.4:8000";
   // static const String baseUrl = "https://testingbackend.duckdns.org";
   // static const String baseUrl = "http://10.121.127.158:8000";
   //Auth

@@ -31,7 +31,7 @@ class AuthRepo {
         );
       }
     } on DioException catch (e) {
-      Logger().e(e.response?.data["detail"] ?? "Something went wrong");
+      Logger().e(e.response?.data?["detail"] ?? "Something went wrong");
       return Right(
         APIError(
           code: e.response?.statusCode ?? 0,

@@ -243,46 +243,7 @@ class _LoginProfileDetailScreenState extends State<LoginProfileDetailScreen> {
                   ),
                 ],
               ),
-              Column(
-                crossAxisAlignment: .start,
-                children: [
-                  Row(
-                    crossAxisAlignment: .end,
-                    spacing: 12,
-                    children: [
-                      Expanded(
-                        child: CustomTextField(
-                          label: "Hobby",
-                          hint: "Enter Hobby And Press Add",
-                          controller: hobbyController,
-                        ),
-                      ),
-                      CustomElevatedButton(
-                        child: Text("Add"),
-                        onPressed: () {
-                          if (hobbyController.text.trim().isEmpty) return;
-                          hobby.add(hobbyController.text.trim());
-                          hobbyController.clear();
-                        },
-                      ),
-                    ],
-                  ),
-                  Obx(
-                    () => Wrap(
-                      spacing: 12,
-                      crossAxisAlignment: .start,
-                      children: List.generate(hobby.length, (index) {
-                        return Chip(
-                          label: Text(hobby[index]),
-                          onDeleted: () {
-                            hobby.removeAt(index);
-                          },
-                        );
-                      }),
-                    ),
-                  ),
-                ],
-              ),
+
               Column(
                 crossAxisAlignment: .start,
                 spacing: 6,

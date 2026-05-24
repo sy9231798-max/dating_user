@@ -3,6 +3,7 @@ import 'package:dating_user/core/constant/app_image.dart';
 import 'package:dating_user/core/constant/app_text_style.dart';
 import 'package:dating_user/features/authentication/controller/login/login_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -82,6 +83,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           label: "Mobile Number",
                           prefixIcon: Icon(Iconsax.mobile_copy),
                           keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(10)
+                          ],
                           controller: controller.mobileController,
                         ),
                         Obx(
